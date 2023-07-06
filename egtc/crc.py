@@ -3,6 +3,7 @@ import numpy as np
 class CRC:
     @staticmethod
     def crc8(data) -> np.uint8:
+        """Needs to calculate Header checksum of package"""
         crc = np.uint8(0xFF)
         for b in data:
             crc ^= np.uint8(b)
@@ -17,6 +18,7 @@ class CRC:
 
     @staticmethod
     def crc16(data) -> np.uint16:
+        """Needs to calculate ServicesFrameDataCheckSum checksum of package"""
         crc = np.uint16(0xFFFF)
         for b in data:
             crc ^= np.uint16(b) << 8
