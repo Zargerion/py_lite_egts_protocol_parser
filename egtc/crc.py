@@ -21,7 +21,7 @@ class CRC:
         """Needs to calculate ServicesFrameDataCheckSum checksum of package"""
         crc = np.uint16(0xFFFF)
         for b in data:
-            crc ^= np.uint16(b) << 8
+            crc ^= np.uint16(b) << np.uint16(8)
 
             for _ in range(8):
                 if crc & 0x8000 != 0:
