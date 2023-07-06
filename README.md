@@ -14,7 +14,7 @@ venv\Scripts\activate
 
 ```bash
 
-python -u ".\client\test_client.py" ".\client\to_test_egts_packages.csv"
+python -u ".\client\run_mini_client.py" ".\client\to_test_egts_packages.csv"
 
 ```
 

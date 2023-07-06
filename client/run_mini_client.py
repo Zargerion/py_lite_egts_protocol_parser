@@ -5,9 +5,9 @@ import socket
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("-s", "--host", help="Адрес сервера для приема ЕГТС", default='127.0.0.2', type=str)
-    parser.add_argument("-p", "--port", help="Порт сервера для приема ЕГТС", default=6000, type=int)
-    parser.add_argument("file", help="Тестовый файл с пакетами", type=str)
+    parser.add_argument("-s", "--host", help="Adress of server to work with EGTS", default='127.0.0.2', type=str)
+    parser.add_argument("-p", "--port", help="Port to work with EGTS", default=6000, type=int)
+    parser.add_argument("file", help="Text file with packages", type=str)
     
     args = parser.parse_args()
 

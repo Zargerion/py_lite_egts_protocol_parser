@@ -1,4 +1,3 @@
-import os
 import yaml
 from enum import Enum
 
@@ -27,7 +26,7 @@ class Settings:
             )
         return False
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """String represintation of object"""
         return f"Settings(host={self.host}, port={self.port}, conn_ttl={self.conn_ttl}, log_level={self.log_level})"
     
