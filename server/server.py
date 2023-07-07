@@ -2,11 +2,21 @@ import socket
 import logging
 
 class Server:
-    def __init__(self, addr: str, ttl: int):
-        self.addr = addr
-        self.ttl = ttl
+    def __init__(self):
+        self.addr: str
+        self.ttl: int
         self.listener = None
         
+    def New(self, addr: str, ttl: int):
+        self.addr = addr
+        self.ttl = ttl
+
+    def __handleConn(self, conn: socket) -> None:
+        try:
+
+            pass
+        finally:
+            conn.close()
     
     def run(self) -> None:
         try:
@@ -18,7 +28,8 @@ class Server:
                     try: 
                         conn, clint_addr = self.listener.accept()
                         logging.info("A connection is established to client %s", clint_addr)
-                        # Ваш код для обработки соединения клиента
+                        
+                        self.__handleConn(conn)
                         
                     except Exception as e:
                         logging.error(f"Cannot make connection: {e}")
