@@ -21,7 +21,9 @@ class Server:
     def run(self) -> None:
         try:
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as self.listener:
-                self.listener.bind((self.addr, 6000))
+                # it split this "{host}:{port}"
+                host, port = self.addr.split(':')
+                self.listener.bind((host, port))
                 logging.info("Server is running...", self.addr)
                 
                 while True:
