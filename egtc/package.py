@@ -1,10 +1,11 @@
 from io import BytesIO
 from struct import unpack
+import os
 
 import numpy as np
 
-from binary_data import BinaryData
-from crc import CRC
+from .binary_data import BinaryData
+from .crc import CRC
 
 class Package:
     def __init__(self):
@@ -62,16 +63,39 @@ class Package:
         
         ##########################################################
         
-        # Here would be working with inner structures and secret
+        # Here sould be working with inner structures and secret
         
         ##########################################################
-        
-        if p.ServicesFrameDataCheckSum == CRC.crc16(content[p.HeaderLength:p.HeaderLength+p.FrameDataLength]):
 
-            # crcBytes = buf.read(2)
-            # p.ServicesFrameDataCheckSum = unpack('<H', crcBytes)[0]
-            
+        buf.seek(-2, os.SEEK_END) # makes new position to read buff from end -2 bytes
+        p.ServicesFrameDataCheckSum = unpack('<H', buf.read(2))[0]
+        if p.ServicesFrameDataCheckSum == CRC.crc16(content[p.HeaderLength:p.HeaderLength+p.FrameDataLength]):
             print("Valid ServicesFrameData checksum!")
         else:
             raise Exception("Wrond ServicesFrameData checksum")
+        
+    def print_packet_values(self):
+        packet = self
+        print(f"ProtocolVersion: {packet.ProtocolVersion}")
+        print(f"SecurityKeyID: {packet.SecurityKeyID}")
+        print(f"Prefix: {packet.Prefix}")
+        print(f"Route: {packet.Route}")
+        print(f"EncryptionAlg: {packet.EncryptionAlg}")
+        print(f"Compression: {packet.Compression}")
+        print(f"Priority: {packet.Priority}")
+        print(f"HeaderLength: {packet.HeaderLength}")
+        print(f"HeaderEncoding: {packet.HeaderEncoding}")
+        print(f"FrameDataLength: {packet.FrameDataLength}")
+        print(f"PacketIdentifier: {packet.PacketIdentifier}")
+        print(f"PacketType: {packet.PacketType}")
+
+        if packet.Route == "1":
+            print(f"PeerAddress: {packet.PeerAddress}")
+            print(f"RecipientAddress: {packet.RecipientAddress}")
+            print(f"TimeToLive: {packet.TimeToLive}")
+
+        print(f"HeaderCheckSum: {packet.HeaderCheckSum}")
+        print(f"ServicesFrameDataCheckSum: {packet.ServicesFrameDataCheckSum}")
+        
+    
             

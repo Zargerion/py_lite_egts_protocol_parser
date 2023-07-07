@@ -18,6 +18,14 @@ python -u ".\client\run_mini_client.py" ".\client\to_test_egts_packages.csv"
 
 ```
 
+### Can help to run light server to receive and come packs to clients
+
+```bash
+
+python -u -m server.run_mini_server -c ".\config\conf.yaml"
+
+```
+
 ### Can help to install dependencies
 
 ```bash

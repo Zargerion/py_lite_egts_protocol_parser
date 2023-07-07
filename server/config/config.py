@@ -38,9 +38,9 @@ class Settings:
         """Return host and port as f'{self.host}:{self.port}'"""
         return f"{self.host}:{self.port}"
 
-    def get_log_level(self) -> LogLevel:
+    def get_log_level(self) -> str:
         """Return level of logging"""
-        return self.log_level
+        return self.log_level.value
 
 
 def from_yaml(conf_path: str) -> Settings:
