@@ -29,6 +29,7 @@ class Package:
         self.ServicesFrameDataCheckSum: np.uint16
 
     def decode(self, content, options=None):
+        """Decode buff to package structure"""
         buf = BytesIO(content)
         p = self
         p.ProtocolVersion: np.uint8 = unpack('<B', buf.read(1))[0]
@@ -74,7 +75,8 @@ class Package:
         else:
             raise Exception("Wrond ServicesFrameData checksum")
         
-    def print_packet_values(self):
+    def print_packet_values(self) -> None:
+        """Prints all values of this object"""
         packet = self
         print(f"ProtocolVersion: {packet.ProtocolVersion}")
         print(f"SecurityKeyID: {packet.SecurityKeyID}")

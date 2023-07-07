@@ -12,12 +12,7 @@ def main():
 
     if not args.c:
         logging.fatal('Configuration file path not specified')
-
     cfg = from_yaml(os.path.join(os.path.dirname(os.path.abspath(__file__)), args.c))
-    try:
-        cfg = from_yaml(os.path.join(os.path.dirname(os.path.abspath(__file__)), args.c))
-    except Exception as e:
-        logging.fatal(f'Error parsing configuration file: {e}')
 
     logging.basicConfig(level=cfg.get_log_level())
 

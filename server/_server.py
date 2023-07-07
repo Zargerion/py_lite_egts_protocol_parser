@@ -12,10 +12,12 @@ class Server:
         self.listener = None
         
     def New(self, addr: str, ttl: int):
+        """Gets 'adress:port' and time of life connection"""
         self.addr = addr
         self.ttl = ttl
 
     def __handleConn(self, conn: socket.socket) -> None:
+        """Handling of connection"""
         headerLen = 10
         try:
             headerBuf = conn.recv(headerLen)
@@ -51,6 +53,7 @@ class Server:
             conn.close()
     
     def run(self) -> None:
+        """Runs server..."""
         try:
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as self.listener:
                 # it split this "{host}:{port}"
@@ -75,5 +78,6 @@ class Server:
             self.listener.close()
 
     def stop(self) -> None:
+        """Close socket"""
         if self.listener is not None:
             self.listener.close()
