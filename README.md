@@ -1,5 +1,7 @@
 # Lite Proto EGTS Parser
 
+欲速则不达。
+
 https://www.swe-notes.ru/post/protocol-egts/ - The ready package for checking was taken from here, so you can verify the correctness of the data.
 
 ### Can help to create vitrual environment
