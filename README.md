@@ -2,6 +2,8 @@
 
 欲速则不达。
 
+Это мой первый опыт работы с байтами и парсингом протоколов. Он был до безумия интересным. Я знаю, как проходит авторизация в полностью реализованном протоколе и понимаю, как генерируется ответ. На данный момент, в связи с основной работой, веремени слишком мало на полную реализацию.
+
 https://www.swe-notes.ru/post/protocol-egts/ - The ready package for checking was taken from here, so you can verify the correctness of the data.
 
 ### Can help to create vitrual environment
